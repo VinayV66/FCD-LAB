@@ -1,0 +1,18 @@
+ 
+lex 
+%{ 
+#include <stdio.h> 
+int operators = 0, identifiers = 0; 
+%} 
+%% 
+[a-zA-Z][a-zA-Z0-9]* {identifiers++; printf("Identifier: %s\n", yytext);} 
+"+"|"-"|"*"|"/" {operators++; printf("Operator: %s\n", yytext);} 
+. ; 
+%% 
+int main() { 
+printf("Enter the expression: "); 
+yylex(); 
+printf("Operators: %d\nIdentifiers: %d\n", operators, identifiers); 
+return 1; 
+} 
+int yywrap() { return 1; } 
