@@ -1,0 +1,16 @@
+%{ 
+#include <stdio.h> 
+%} 
+%% 
+^([a-zA-Z0-9]+|\([a-zA-Z0-9]+\))(\*|\+)?$   { printf("Valid Regular Expression\n"); } 
+.*                                         
+ { printf("Invalid Regular Expression\n"); } 
+%% 
+int main() { 
+printf("Enter expression: "); 
+yylex(); 
+return 0; 
+} 
+int yywrap() { 
+return 1; 
+}
